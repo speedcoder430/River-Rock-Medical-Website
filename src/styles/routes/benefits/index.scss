@@ -1,0 +1,75 @@
+.section.section--benefits {
+  .content {
+    @extend .flex;
+    padding-top: 5%;
+    @include mobile {
+      display: block;
+    }
+  }
+  .block {
+    &--image {
+      position: relative;
+      width: 43.59%;
+      margin-left: 5%;
+      z-index: 0;
+      @include mobile {
+        margin: auto;
+        width: 80%;
+        margin-bottom: -40%;
+      }
+      .benefits-cover {
+        position: absolute;
+        width: 100%;
+        transform: translate(20%, 0%);
+        @include mobile {
+          transform: translate(20%, -20%);
+          position: static;
+        }
+      }
+    }
+    &--text {
+      @extend .v-flex;
+      flex: 1;
+      padding-right: 5%;
+      color: $dark;
+      z-index: 1;
+      @include mobile {
+        padding-top: 5%;
+        padding-left: 18%;
+        padding-right: 18%;
+      }
+      h5 {
+        font-family: $primary-font;
+        font-weight: bold;
+        font-size: 21px;
+        font-size: 2.1rem;
+      }
+      h6 {
+        font-size: 1.5rem;
+        margin: -0.6rem 0 -0.6rem 0.6rem;
+
+        &:before {
+          content: '';
+          width: 7.894736px;
+          height: 10px;
+          background-image: url('/images/tri-right.svg');
+          display: inline-block;
+          position: relative;
+          bottom: 1px;
+          left: -2px;
+          transform: scaleX(1.5);
+        }
+      }
+      h5 + h6 {
+        margin: 0 0 -0.6rem 0.6rem;
+      }
+      .text-content {
+        margin: 6px 0 10px 0;
+        margin: 0.6rem 0 1rem 0;
+        @include mobile {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}

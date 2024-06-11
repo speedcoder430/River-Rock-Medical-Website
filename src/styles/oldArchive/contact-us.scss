@@ -1,0 +1,77 @@
+@import 'our-custom-page-resets';
+// @import 'global-custom-variables'; ----now in our-custom-page-resets
+
+h1{
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: $main-pages-color-text;
+}
+
+// .zhContactForm{
+//     display: flex;
+//     flex-flow: column nowrap;
+//     justify-content: flex-start;
+//     align-items: stretch;
+//     flex: 1 1 500px;
+//     margin: 0 20px;
+//     min-width: 320px;
+// }
+
+.zhContactForm{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 20px;
+    @include media-less-than(mobile) {
+        margin: 0 40px 0 5px;
+    }
+    & > div {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: flex-start;
+    }
+}
+
+.zhContactForm div.section2 {
+    margin-top: 100px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    & div {
+        flex: 1 1 30%;
+        min-width: 300px;
+    }
+    @include media-less-than(computer) {
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 2vw;
+        & div {
+            margin-top: 30px;
+            border-top: 1px solid $theme-green;
+        }
+    }
+    @include media-less-than(mobile) {
+        word-break: break-all;
+        min-width: unset;
+        max-width: 100%;
+    }
+}
+
+//google forms embed
+iframe#zhGoogleContactForm{
+    height: 90vh;
+    box-shadow: 2px 5px 10px 3px rgba(0,0,0,0.14), 
+        2px 1px 16px 3px rgba(0,0,0,0.12), 
+        2px 3px 7px 2px rgba(0,0,0,0.2);
+    box-shadow: 2px 5px 10px 3px rgba(17,68,29,0.14), 
+        2px 1px 16px 3px rgba(17,68,29,0.12), 
+        2px 3px 7px 2px rgba(17,68,29,0.2);
+
+}

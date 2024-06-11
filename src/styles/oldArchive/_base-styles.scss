@@ -1,0 +1,21 @@
+//base styles
+//things like setting border box, 
+//resets,
+//base fonts and colors, etc.
+
+
+html{
+    background-color: $html-Background-Color;
+    color: $main-Font-Color;
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+

@@ -1,0 +1,36 @@
+/* colors & gradients */
+$primary: #CBA47D;
+$primary: #d4904c;
+$secondary: #998675;
+$dark: #2D2D2D;
+$grey: #999999;
+$darkgrey: #666666;
+$lightgrey: #DBD4CC;
+$white: #FFFFFF;
+
+/* fonts */
+$primary-font: Helvetica, Arial, sans-serif;
+$lato-font: 'Lato', sans-serif;
+$acaslon-font: 'ACaslonPro', serif;
+$aleck-font: 'ATTAleckSans', Arial, sans-serif;
+$semibold: 600;
+$light: 300;
+
+/* metrics */
+$header-height: 64px;
+
+//SPACING
+$general-padding-sides: ms(2);
+$general-padding-topandbottom: ms(2);
+$general-padding: $general-padding-topandbottom $general-padding-sides;
+
+$general-margin-sides: ms(2);
+$general-margin: 0 $general-margin-sides;
+
+$exterior: $general-padding + $general-margin;
+
+:root {
+  --transition-speed: 800ms; //overridden in AnimatedRoute.js
+  --zoom-in-x-adjust: 0;
+  --zoom-in-y-adjust: 0;
+}

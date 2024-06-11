@@ -1,0 +1,50 @@
+.section.section--faq {
+  h5 {
+    @include mobile {
+      display: none;
+    }
+  }
+  .content {
+    padding: 10% 20%;
+    @include mobile {
+      padding: 10%;
+    }
+    .options-content {
+      padding: 0 5% 0 10%;
+    }
+  }
+  .option {
+    padding: 2.5rem 0;
+    &:hover {
+      background-color: black;
+      color: $lightgrey;
+    }
+    &--selected {
+      padding-bottom: 0;
+    }
+  }
+  .answer {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    transition: all 0.2s ease-out;
+    &--selected {
+      transition: all 0.3s ease-out;
+      transition-delay: 0.1s;
+      max-height: 400px;
+      background: $lightgrey;
+      margin: 1rem 0 0 0;
+      padding: 5%;
+      // width: 95%;
+      color: $dark;
+      font-family: $primary-font;
+      font-size: 1.4rem;
+      font-style: normal;
+      text-align: left;
+      cursor: text;
+    }
+    & p:not(:first-of-type) {
+      margin: 1.6rem 0 1rem 0;
+    }
+  }
+}

@@ -1,0 +1,245 @@
+:root {
+  --menu-scale: 1;
+}
+.section.section--menu {
+  background-color: $dark;
+  .section__content {
+    @include mobile {
+      padding-top: 10%;
+    }
+  }
+  a {
+    text-decoration: none;
+  }
+  .nav {
+    @extend .v-center;
+    z-index: 1;
+    justify-content: space-between;
+    position: relative;
+    margin: 2% 4% 0;
+    @include mobile {
+      flex-direction: column;
+      margin: 0;
+    }
+
+    &__logo {
+      // width: 440px;
+      width: 20%;
+      @include mobile {
+        width: 80%;
+        margin: auto;
+      }
+    }
+    .motto {
+      @extend .a-center;
+      font-size: 32px;
+      font-size: 2.5rem;
+      font-family: $acaslon-font;
+      font-style: italic;
+      color: $primary;
+      opacity: 0.5;
+      @include mobile {
+        display: none;
+      }
+    }
+    .btn.btn--login {
+      @extend .v-center;
+      padding-right: 2%;
+      @include mobile {
+        display: none;
+      }
+      span {
+        font-family: $primary-font;
+        font-weight: bold;
+        font-size: 15px;
+        font-size: 2.1rem;
+        color: $primary;
+        margin-right: 20px;
+        margin-right: 2rem;
+        text-align: left;
+        letter-spacing: 2px;
+        // transform: scale(var(--menu-scale));
+      }
+      img {
+        width: 16px;
+      }
+    }
+  }
+  .content {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    @include mobile {
+      margin-top: 10%;
+    }
+  }
+  .box {
+    width: 820px;
+    height: 820px;
+    transform: scale(var(--menu-scale));
+    @include mobile {
+      transform: scale(calc(var(--menu-scale) + 0.12));
+      font-size: 1.8rem;
+    }
+    & > * {
+      position: absolute;
+    }
+    .motto-mobile {
+      left: 50%;
+      top: -10%;
+      transform: translateX(-50%);
+      display: none;
+      font-size: 32px;
+      font-size: 3.2rem;
+      font-family: $acaslon-font;
+      font-style: italic;
+      color: $primary;
+      @include mobile {
+        display: block;
+      }
+    }
+    .double-tri {
+      width: 782px;
+      left: 18px;
+      top: 105px;
+      @include mobile {
+        top: 142px;
+      }
+    }
+    .slash {
+      height: 778px;
+      right: 39px;
+      top: 36px;
+    }
+    .btn--image {
+      span {
+        @extend .a-center;
+        font-family: $lato-font;
+        font-weight: bold;
+        font-size: 27px;
+        font-size: 2.7rem;
+        color: $white;
+        letter-spacing: 7px;
+        letter-spacing: 0.7rem;
+        text-align: left;
+        white-space: nowrap;
+      }
+    }
+    .btn--text {
+      font-family: $primary-font;
+      font-weight: bold;
+      font-size: 21px;
+      font-size: 2.1rem;
+      color: $primary;
+      color: white;
+      letter-spacing: 4.5px;
+      letter-spacing: 0.45rem;
+      text-align: left;
+      white-space: nowrap;
+      border-bottom: 1px solid $primary;
+      border-bottom: 1px solid #cba47d;
+      padding-left: 4.5px;
+      padding-left: 0.45rem;
+    }
+    .btn--you {
+      width: 192px;
+      left: 330px;
+      top: 4px;
+      span {
+        margin-top: -25px;
+        margin-left: 4px;
+      }
+    }
+    .btn--purpose {
+      width: 314px;
+      left: 297px;
+      top: 170px;
+      span {
+        margin-top: -5px;
+        margin-left: -2px;
+      }
+    }
+    .btn--root {
+      width: 557px;
+      left: 137px;
+      top: 287px;
+      span {
+        margin-top: -2px;
+        margin-left: 11px;
+      }
+    }
+    .btn--values {
+      width: 216px;
+      left: 3px;
+      top: 359px;
+    }
+    .btn--strengths {
+      width: 198px;
+      left: 291px;
+      top: 367px;
+      span {
+        letter-spacing: 4px;
+        margin-left: 2px;
+        margin-top: -3px;
+      }
+    }
+    .btn--benefits {
+      width: 218px;
+      left: 573px;
+      top: 359px;
+      span {
+        letter-spacing: 5px;
+        margin-left: 5px;
+      }
+    }
+    .btn--about {
+      left: 557px;
+      top: 123px;
+    }
+    .btn--contact {
+      left: 191px;
+      top: 656px;
+      @include mobile {
+        // display: none;
+        top: 682px;
+      }
+    }
+    .btn--services {
+      left: 474px;
+      top: 661px;
+      @include mobile {
+        top: 682px;
+      }
+    }
+  }
+  .nav-mobile {
+    display: none;
+    z-index: 1;
+    @include mobile {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      width: 100vw;
+    }
+    & > * {
+      @extend .center;
+      flex: 1;
+      height: 64px;
+      font-size: 15px;
+      font-size: 1rem;
+      color: $primary;
+      letter-spacing: 2px;
+    }
+    .btn.btn--login {
+      // background-color: #F2F2F2;
+      color: white;
+      span {
+        margin-right: 12px;
+        margin-right: 1.2rem;
+      }
+      img {
+        width: 12px;
+      }
+    }
+  }
+}

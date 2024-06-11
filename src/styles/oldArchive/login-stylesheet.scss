@@ -1,0 +1,38 @@
+//login stylesheet
+#login h1 a, .login h1 a {
+    background-image: url(https://riverrockmedical.com/wp-content/themes/atmosphere-pro/images/LogoThick.svg);
+    height:65px;
+    width:320px;
+    background-size: 320px 65px;
+    background-repeat: no-repeat;
+    padding-bottom: 10px;
+    padding-top: 50px;
+}
+
+form#loginform p.galogin {
+    background-color: transparent;
+    border: 2px solid #333;
+    padding: 6px;
+    height: fit-content;
+    & a{
+        color: #333;
+        &:hover{
+            color: #55acee;
+        }
+
+    }
+}
+
+form#loginform {
+    p label{
+        display:none;
+    } 
+    p.forgetmenot{}
+    p.submit{
+        display:none;
+    }
+    h3 {
+        display: none;
+    }
+
+}

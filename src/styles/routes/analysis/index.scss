@@ -1,0 +1,86 @@
+.section.section--analysis {
+  .content {
+    @extend .flex;
+    padding-top: 5%;
+    @include less-than-tablet {
+      display: block;
+    }
+  }
+  .block {
+    &--image {
+      position: relative;
+      width: 43.59%;
+      margin-left: 5%;
+      @include less-than-tablet {
+        display: none;
+      }
+      svg {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 80px;
+      }
+    }
+    &--text {
+      @extend .v-flex;
+      flex: 1;
+      padding-right: 5%;
+      color: $dark;
+      @include less-than-tablet {
+        padding-left: 16%;
+        padding-right: 16%;
+      }
+      .text-content {
+        padding-right: 20%;
+        @include less-than-tablet {
+          padding-right: 0;
+        }
+        i {
+          font-family: $acaslon-font;
+          font-size: 18px;
+          font-size: 1.8rem;
+          font-weight: $semibold;
+          color: $dark;
+        }
+        ol {
+          font-size: smaller;
+        }
+      }
+      .purpose-cover {
+        display: none;
+        @include less-than-tablet {
+          display: block;
+          margin-top: 5%;
+        }
+      }
+      .options-content {
+        padding-right: 28%;
+        @include less-than-tablet {
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+      }
+    }
+  }
+  .cls-1 {
+    font-size: 41px;
+    fill: #999;
+    font-family: Helvetica-Bold, Helvetica;
+    font-weight: 700;
+  }
+  .cls-2 {
+    letter-spacing: -0.05em;
+  }
+  .cls-3 {
+    fill: none;
+  }
+  .cls-3, .cls-4 {
+    stroke: #000;
+    stroke-miterlimit: 10;
+    stroke-width: 2.37px;
+  }
+  .cls-4 {
+    // fill: #dbd4cc;
+    fill: #888;
+    opacity: 0.34;
+  }
+}

@@ -1,0 +1,58 @@
+//add to child theme folder
+//will be enqueued only on front page
+
+
+//this should get us up to the full-width page, blank canvas to work with
+@import 'our-custom-page-resets';
+// @import 'mixins'; **now imported in our custom page resets
+.site-inner{
+    margin-bottom: -40px;
+}
+.overallZH{
+    position: relative;
+}
+
+h1, h2{
+    font-family: Garamond;
+}
+
+h1{
+    color:white;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+h2 {
+    @extend h1;
+    top: unset;
+    bottom: 10%;
+}
+
+.imageContainerDiv{
+    width:100%;
+    @include media-less-than(mobile){
+        width: 300%;
+    }
+    & img{
+        width: 100%;
+        margin-bottom: 0;
+        @include media-less-than(mobile){
+            width:300%;
+            margin-left: -52%;
+        }
+    }
+}
+    
+@include media-less-than(computer){
+
+    h2,
+    h3,
+    h4,
+    p{
+        line-height: 1;
+        margin-bottom: 0;
+        font-size: 2.5vw;
+    }
+}
+

@@ -1,0 +1,181 @@
+@import 'our-custom-page-resets';
+// @import 'mixins'; **now imported in our-custom-page-resets
+
+.site-inner{
+    padding-top: 10%;
+}
+
+.whatISheader{
+    padding-left: 10%;
+    margin-bottom: 1.5625rem;
+}
+
+.whatIStext {
+    h2,
+    h3 {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    img{
+        display: flex;
+        justify-content: center;
+        &.whatISswoosh{
+            height: 1.25rem;
+            width: auto;
+            margin-top: 0.96rem;
+            margin-bottom: 0.96rem;
+        }
+    }
+    counter-reset: footnotes;
+
+}
+
+.whatISinternalCopyControl{
+    width: 60%;
+    margin: 0 auto;
+    max-width: 44em;
+    @include media-less-than(computer){
+        width: 90%;
+    }
+    a.footnotelink {
+        color:black;
+        counter-increment: footnotes;
+        text-decoration:none;
+        &:after{
+            content:"[" counter(footnotes) "]";
+            font-size: 0.4em;
+            margin-left: 2px;
+            cursor: pointer;
+            position:relative;
+            top: -1.2em;
+            line-height:0;
+
+        }
+        &:hover{
+            background-color: rgba(0,0,0,0.2);
+            transition: all 0.65s ease-out;
+        }
+        &:focus{
+
+        }
+    }
+}
+
+
+.whatISheadlineImageDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+
+    @include media-less-than(mobile){
+
+    }
+    img{
+        width:100%;
+        margin-top: 0.96rem;
+        margin-bottom: 0.96rem;
+        @include media-less-than(mobile){
+            width:150%;
+        }
+    }
+}
+
+.page .conciergecopybuttondiv{
+    text-align:center;
+    // border: 1px solid #55acee;
+    border: 1px solid #333;
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-out;
+    &:hover{
+        background-color: #34313b;
+        transition: all 0.3s ease-out;
+    }
+    // p, p:last-child{
+    //     margin: 1rem 0;
+    // }
+    a{
+        //margin: 1.5625rem auto;
+        display: flex;
+        padding: 0.96rem 20px;
+        color:#333;
+        border-bottom: none;
+        text-decoration:none;
+        transition: all 0.2s ease-out;
+        width: 100%;
+        &:hover{
+            color: white;
+            border-bottom: none;
+            transition: all 0.3s ease-out;
+        }
+    }
+}
+
+.footnotesdiv{
+    :target{
+        //border-left: 10px solid red;
+        background-color: rgba(yellow,0.3);
+        animation: footnoteselected 0.8s linear;
+        animation-iteration-count: 2;
+        animation-delay: 1s;
+        // font-size:1.5em;
+        // line-height:1.5em;
+
+        &:hover{
+            background-color: rgba(yellow,1);
+            a{color:#333;}
+        }
+    }
+    @keyframes footnoteselected{
+        0%{transform: translateX(0vw);}
+        50%{transform:translateX(2vw);}
+        100%{transform:translateX(0vw);}
+    }
+    a:visited{
+        color:#55acee;
+    }
+    a:hover{
+        background-color: transparent;
+    }
+}
+
+.flex.half{
+    h2{text-align: center;}
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: space-around;
+    > div{
+        border: 7px double #333;
+        flex: 1 1 40%;
+        min-width: 475px;
+    }
+}
+
+.endNav{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: space-around;
+    div{
+        flex: 0 1 33%;
+        margin: 1.5625rem 10px;
+    }
+}
+
+//img float right
+#concVStrad{
+    display: flex;
+    flex-flow: column nowrap;
+    float: right;
+    width: 40%;
+}

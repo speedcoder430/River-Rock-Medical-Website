@@ -1,0 +1,350 @@
+//styles for pricing page
+// @import 'mixins';  -- now in our-custom-page-resets
+@import 'our-custom-page-resets';
+
+// @import 'global-custom-variables'; --- now in our-custom-page-resets
+
+
+$pHeight: calc(60vw + 10vh);
+$pricingTop: 1140px;
+$totalHeight: 4200px;
+$totalTabletHeight: 3600px;
+$totalDesktopHeight: 2500px;
+
+.zhRow.imageRow {
+    width: 100%;
+    position: relative;
+    & h1 {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: $main-pages-color-text;
+        @include media-less-than(tablet) {
+            color: $main-pages-color-text-darker;
+        }
+    }
+}
+
+.zhcontainer {
+    width: 80%;
+    @include media-less-than(mobile) {
+        width: 95%;
+    }
+    margin: 0 auto;
+}
+
+.zhRow.zhExplain {
+    height: $totalHeight;
+    @include media-greater-than(tablet) {
+        height: $totalTabletHeight;
+    }
+    @include media-greater-than(computer) {
+        height: $totalDesktopHeight;
+    }
+}
+
+h1,h2 {
+    text-decoration: underline;
+}
+
+h1,h2,h3,h4 {
+    font-weight: 600;
+}
+
+.lilist-starter {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+a.quickfacts-link {
+    font-weight: 300;
+}
+
+.ion-chevron-right{
+    margin: 25px 5px;
+}
+
+input[type='radio'] {
+    display:none; //this hides the radio button itself
+}
+
+input[type='radio']:checked {
+    & + label {
+        background-color: #333;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+}
+input[type='radio']:disabled {
+    & + label {
+        color: grey;
+        text-decoration: line-through;
+        text-decoration-color: red;
+        font-style: italic;
+        transition: all 0.2s ease-out;
+        &:hover{
+            color: red;
+            background-color: white;
+            cursor: unset;
+        }
+        &::after {
+            content: ' (Coming Soon)';
+            text-decoration: unset;
+        }
+    }
+}
+
+.zhPricing {
+    // height: $pHeight;
+    // @include media-less-than(mobile){
+    //     height: 2000px;
+    // }
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    // align-items: center;
+    width: 100%;
+    position: relative;
+    // border: 1px solid blue;
+}
+
+.form{
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    // align-items: center;
+    width: 100%;
+    position: relative;
+
+}
+
+#navTabs{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    border-bottom: 2px solid #333;
+    height: 75px;
+    label {
+        flex: 1 1 100px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0px;
+        padding: 10px 10px;
+        border: 1px solid grey;
+        cursor: pointer;
+        text-align: center;
+        opacity: 0.75;
+        transition: 0.4s ease-in;
+        
+        &:hover{
+            background-color: #333;
+            color: white;
+            transition: 0.2s ease-out;
+        }
+    }
+
+}
+
+div[id*="Selector"] {
+
+    & h3{
+        flex: 0 0 100%;
+    }
+    transition: all 1s ease-in;
+    overflow: hidden;
+    min-height: 285px;
+    display: flex;
+    flex-flow: row wrap;
+    @include media-less-than(tablet) {
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: stretch;
+    }
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: flex-start;
+    visibility: visible;
+    position: absolute;
+    top: 120px;
+    left: 0;
+    &.zhHidden {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.1s ease-out;
+        // overflow: hidden;
+    }
+
+
+    //base, unchecked styles
+    label {
+        flex: 0 1 30%; 
+        min-height: 75px;
+        @include media-less-than(tablet){
+            flex: 1 1 150px;
+        }
+        &[for*="Full"],&[for*="Lite"] {
+            flex: 4 0 40%;
+            @include media-less-than(tablet){
+                flex: 1 1 200px;
+            }
+        }
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        overflow: hidden;
+        margin: 5px 5px;
+        padding: 10px 10px;
+        border: 1px solid grey;
+        box-shadow: 0 0 2px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.24);
+        // margin: 10px 0px;
+        cursor: pointer;
+        text-align: center;
+        opacity: 0.75;
+        transition: 0.4s ease-in;
+        
+        &:hover{
+            // background-color: #333;
+            box-shadow: 0 0 8px rgba(0,0,0,0.18), 0 8px 16px rgba(0,0,0,0.36);
+            // color: white;
+            transition: 0.2s ease-out;
+        }
+    }
+
+}
+
+#pricingLinkDiv {
+    transition: all 1s ease-out;
+    overflow: hidden;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    visibility: visible;
+    position: relative;
+    padding: 50px;
+    margin-top: 20px;
+    // margin-bottom: 220px;
+    top: $pricingTop;
+
+    h4 {
+        margin-top: 0;
+        margin-left: 15px;        
+    }
+    h3 {
+        margin-bottom: 0;
+    }
+
+    @include media-greater-than(tablet) {
+        top: 320px;
+    }
+    border: 1px solid black;
+    &.zhHidden{
+        top: 1100px;
+    }
+}
+
+#linkToProduct {
+    padding: 40px 60px;
+    @include media-less-than(tablet) {
+        padding: 40px 10px;
+    }
+    margin: 10px auto;
+    border: 1px solid #333;
+    transition: 0.4s ease-in;
+    display: block;
+    text-align: center;
+    visibility: visible;
+    cursor: pointer;
+    cursor: url('https://riverrockmedical.com/android-chrome-192x192.png'), pointer;
+    &.zhHidden{
+        opacity: 0;
+        visibility: hidden;
+    }
+    &:hover {
+        background-color: #333;
+        color: white;
+        transition: all 0.2s ease-out;
+    }
+}
+
+.infoSection {
+    position: relative;
+    margin-top: 40px;
+    top: 320px;
+    &:focus {
+        color:inherit;
+        outline: none;
+    }
+    @include media-less-than(tablet) {
+        top: $pricingTop;
+    }
+
+    & ul>li:nth-of-type(3) {
+        margin-top: 1.953rem;
+    }
+}
+
+
+.overlay {
+    position: fixed;
+    padding: 50px;
+    width: 90%;
+    z-index: 1000;
+    border: 2px solid #333;
+    background-color: rgba(0,0,0,0.4);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+    @include media-less-than(computer){
+        width: 100%;
+        padding: 80px 15px;
+    }
+
+    &>iframe{
+        margin-left: 50%;
+        transform: translateX(-50%);
+
+    }
+    &.services-summary {
+        background-color: white;
+        height: 80vh;
+        & button.closeButton {
+            background-color: rgba(0,0,0,0.4);
+            top: 0;
+            left: unset;
+            right: 0;
+            &.bottom {
+                right: unset;
+                bottom: 0px;
+                position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+    &.zhHidden {
+        display: none;
+    }
+    button.closeButton {
+        position: absolute;
+        top: 50px;
+        background-color: rgba(0,0,0,0.4);
+        @include media-less-than(computer){
+            top: 85px;
+        }
+        left: 61%;
+        color: white;
+        border: none;
+        z-index: 1001;
+    }
+
+}
+

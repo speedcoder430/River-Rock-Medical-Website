@@ -1,0 +1,32 @@
+{
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/contracts/membership",
+        "destination": "/membershipContract.html"
+      },
+      {
+        "source": "/HIPAA-exclusion",
+        "destination": "/hipaa-exclusion.html"
+      },
+      {
+        "source": "/privacy",
+        "destination": "/office-privacy.html"
+      },
+      {
+        "source": "/website-terms-of-use",
+        "destination": "/website-terms-of-use.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

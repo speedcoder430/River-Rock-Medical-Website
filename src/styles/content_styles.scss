@@ -1,0 +1,83 @@
+//external functions
+@import './oldArchive/modular-scale';
+//information and functions
+@import 'variables';
+
+@import 'mixins';
+
+@import 'base';
+
+//other main styles
+@import './oldArchive/z-typography-styles';
+
+body {
+  background-color: $lightgrey;
+}
+.content-wrapper {
+  max-width: 1440px;
+  margin: 0 auto $general-padding-topandbottom;
+  background-color: white;
+  background-color: $lightgrey;
+  // color: white;
+}
+
+.text-container {
+  max-width: 33em;
+  margin: 0 auto;
+  padding: $general-padding;
+  @include less-than-tablet {
+    padding: 6% 4%;
+  }
+  counter-reset: footnotes;
+  a.footnotelink[aria-describedby="footnote-label"] {
+    color: white;
+    text-decoration: none;
+    counter-increment: footnotes;
+    &:hover {
+      color: $secondary;
+    }
+    &:after {
+      content: '['counter(footnotes)']';
+      vertical-align: super;
+      font-size: 0.5em;
+      margin-left: 2px;
+      text-decoration: underline;
+      color: $primary;
+    }
+  }
+}
+
+
+.footnotesdiv{
+  padding: $general-padding;
+  :target{
+      background-color: rgba($lightgrey,0.3);
+      animation: footnoteselected 0.8s linear;
+      animation-iteration-count: 2;
+      animation-delay: 0.4s;
+      font-size:$font-size-h3;
+      line-height:$line-height-std;
+      transition: 0.3s ease-out;
+      &:hover{
+          background-color: rgba($lightgrey,1);
+          a{color:black;}
+      }
+  }
+  @keyframes footnoteselected{
+      0%{transform: translateX(0vw);}
+      50%{transform:translateX(2vw);}
+      100%{transform:translateX(0vw);}
+  }
+  a:visited{
+      color: $secondary;
+  }
+}
+
+img.swoosh {
+  width: auto;
+  height: $font-size-h3;
+  margin: $p-margin-bottom auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}

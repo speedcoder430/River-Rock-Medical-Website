@@ -1,0 +1,36 @@
+.header {
+  @extend .v-center;
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: $header-height;
+  z-index: 9999;
+  background-color: $white;
+  box-shadow: 0px 3px 6px 0 rgba(0, 0, 0, 0.1);
+
+  @include mobile {
+    display: flex;
+  }
+
+  .btn {
+    @extend .center;
+    width: 40px;
+    height: 100%;
+    img {
+      height: 16px;
+    }
+    &.btn--login > img {
+      transform: rotateZ(-45deg) scaleX(1.7);
+    }
+  }
+
+  &__title {
+    flex: 1;
+    text-align: center;
+    font-size: 1.2rem;
+    color: $darkgrey;
+    letter-spacing: 6px;
+  }
+}

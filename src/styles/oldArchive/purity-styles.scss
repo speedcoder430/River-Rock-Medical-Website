@@ -1,0 +1,152 @@
+@import 'our-custom-page-resets';
+
+header.entry-header {
+  position: absolute;
+  top: 22%;
+  left: 15vw;
+  background-color: rgba(0,0,0,0.2);
+  transition: transform 0.5s ease-out;
+  &.slideDown {
+    transform: translateY(12vh);
+  }
+  @include media-less-than(computer) {
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background-color: transparent;
+    top: 16%;
+  }
+
+  @include media-less-than(tablet) {
+    top: 33%;
+    
+  }
+  color: white;
+  z-index:1;
+}
+
+#subheadZH, #subheadZHValue {
+  position: absolute;
+  top: 15%;
+  left: 10vw;
+  color: white;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.2);
+  @include media-less-than(computer) {
+    left: 0;
+    width: 100%;
+    text-align: center;
+    top: 20%;
+    background-color: transparent;
+  }
+  @include media-less-than(tablet) {
+  }
+}
+
+#brucelee, #valuequote {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0,0,0,0.2);
+  @include media-less-than(computer) {
+    left: 0;
+    width: 100%;
+    bottom:0;
+    transform: unset;
+  }
+  @include media-less-than(tablet) {
+
+  }
+  color: white;
+  width: 400px;
+  z-index: 1;
+  &:before,&:after {
+    color: white;
+  }
+  border-color: white;
+}
+
+#purityHero {
+  width: 100%;
+  @include media-less-than(tablet) {
+    height: 65vh;
+  }
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-image: url(https://riverrockmedical.com/wp-content/uploads/2019/01/purity-video-1-poster-300x169.jpg);
+  background-size: cover;
+  background-blend-mode: darken;
+}
+#purityHeroValue {
+  @extend #purityHero;
+  background-image: url(https://riverrockmedical.com/wp-content/uploads/2019/01/purity-video-2-poster-300x169.png);
+}
+.blurOutAnimate {
+  animation: blur-reveal 0.8s ease-in both;
+}
+@keyframes blur-reveal {
+  0% {
+    filter: blur(0px);
+  }
+  100% {
+    filter: blur(8px);
+  }
+}
+
+#videoContainerDiv {
+  @include media-less-than(tablet) {
+    display: none;
+  }
+}
+video#bgvideo {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  // top: 50%;
+  // left: 50%;
+  // min-width: 100%;
+  // min-height: 100%;
+  // width: auto;
+  // height: auto;
+  // z-index: -100;
+  // -ms-transform: translateX(-50%) translateY(-50%);
+  // -moz-transform: translateX(-50%) translateY(-50%);
+  // -webkit-transform: translateX(-50%) translateY(-50%);
+  // transform: translateX(-50%) translateY(-50%);
+  // background: url(placeholder.jpg) no-repeat;
+  // background-size: cover;
+}
+
+//Purity of purpose, purity of values
+.purityofpurposediv {
+  max-width: 44em;
+  margin: 10vh auto 0 auto; 
+  @include media-less-than(tablet) {
+    margin-left: 3vw;
+  }
+  & p:nth-of-type(2) {
+    margin-top: 3.0517578rem;
+  }
+}
+
+// #puritytopimage {
+//     position: absolute;
+//     top: 10rem;
+//     width: 100%;
+//     left: 50%;
+//     transform: translateX(-50%);
+// }
+
+.shorterVersion {
+  display: none;
+}
+
+.questionable {
+  display: none;
+}

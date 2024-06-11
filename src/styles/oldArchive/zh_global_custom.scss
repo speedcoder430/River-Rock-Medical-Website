@@ -1,0 +1,470 @@
+/* zh_global_custom.css goes in child theme folder */
+//external functions
+@import 'modular-scale';
+
+//information and functions
+@import 'global-custom-variables';
+
+//need to edit media breakpoints
+@import 'mixins';
+
+//base-styles like resets, border-box, colors, layout, etc.
+@import 'global-custom-base-styles'; //do I need this?
+
+//other main styles
+@import 'typography-styles';
+
+//woocommerce styles
+@import 'woo-styles';
+
+a.zh-button-style{
+    padding: $general-padding;
+}
+
+
+//content area styles
+// .content{
+//     width: 40rem;
+//     margin-left: auto;
+//     margin-right: auto;
+// }
+
+//Site Container ---------------------------------------------
+
+
+//site container set to fade in over 1s
+
+// .site-container {
+// 	background-color: #fff;
+// 	margin-left: auto;
+// 	margin-right: auto;
+// 	max-width: 1280px;
+// }
+
+// .atmosphere-landing .site-container {
+// 	max-width: 960px;
+// }
+
+//Site Inner ----------------------------
+
+// .site-inner {
+// 	clear: both;
+// 	margin-top: 77px;
+// 	padding: 10% 20%;
+// }
+
+// .atmosphere-landing .site-inner {
+// 	margin-top: 0;
+// }
+
+
+
+
+//header/logo/title styles----------------------------------------------
+
+header.site-header{
+    box-shadow: 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12), 0px 3px 5px -1px rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+    border: none;
+    background-color: rgba(255,255,255,0.4);    
+
+    & >.wrap {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    & .menu-toggle {
+        width: unset;
+        margin: unset;
+        position: fixed;
+        top: 1.8vh;
+        @include media-less-than(tablet) {
+            top: 0;
+        }
+        right: 0;
+        background-color: transparent;
+        &:focus {
+            background-color: rgba(255,255,255,0.4);
+        }
+    }
+}
+
+
+
+.title-area{
+    // margin: 0;
+
+    min-width: 26%; //this makes RiverRock Medical in header on one line
+    //consider media query >computer --> justify @ flex-start & width: 28%
+    //but, this seems to work ok without the query
+    & .site-title{
+        & > a{
+            display: flex;
+            flex-flow: row wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        & svg#RRMC-logo-thick-Header{
+            // min-width: 40px;
+            width: 40px;
+            margin-right: 4.3%;
+            & .logo-thick-header{
+                fill: #333;
+                transition: 0.3s ease-in;
+            }
+            &:hover{
+                & .logo-thick-header{
+                    fill: $theme-green;
+                    transition: 0.5s ease-in;
+                }
+            }
+        }
+    }
+
+}
+
+
+//---------------------------------------------------
+//     Idea to change title color on hover?
+//---------------------------------------------------
+// .site-title a,
+// .site-title a:focus,
+// .site-title a:hover {
+//     color: #333;
+// }
+
+//skip header-image styles since I'm using a "text header"
+
+
+//---------------------------------------------------
+//     Idea to show site description on hover?
+//---------------------------------------------------
+// .site-description {
+// 	display: block;
+// 	height: 0;
+// 	margin-bottom: 0;
+//     text-indent: 0;
+//     overflow: hidden;
+// }
+
+// .title-area:hover{
+//     .site-description{
+//         transition: height 0.8s ease-out 0.2s;
+//         height: $font-size-h3 * $line-height-lg;
+//         // text-indent: 0;
+//     }
+// }
+
+
+//desktop (main menu) nav styles ---------------------------------------
+.nav-primary{
+    background-color: white;
+    // background-image: linear-gradient(to bottom left, #cdff8e,#116809);
+    background-image: linear-gradient(to bottom left, #f9fff4,#758874);
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 90vw;
+    height:100vh;
+    z-index: 900;
+    & > .wrap {
+        width: 100%;
+        height: 100%;
+        padding: 0 7vw 0 0;
+        margin-top: 33vh;
+    }
+
+    .sub-menu-toggle{
+        transition: 0.4s ease-out;
+        color: $theme-black;
+        &:hover {
+            color: $theme-blue;
+            background-color: transparent;
+            border: 1px solid $theme-blue;
+            transition: 0.2s ease-out;
+        }
+        &:focus {
+            background-color: transparent;
+            color: $theme-blue;
+        }
+    }
+    & > .wrap > ul > li:not(.Members-Login) > a{
+        //create space to underline on hover
+        &::after{
+            content: '';
+            display: block;
+            height: 3px;
+            width: 0;
+            margin-top: 5px;
+            background: transparent;
+            transition: width .5s ease, background-color .5s ease;
+        }
+        
+        //underline on hover
+        &:hover::after{
+            width: 100%;
+            background: #2a3b91;
+            // transition: all 0.2s ease-out;
+        }
+    }
+    & ul{
+        display: flex;
+        flex-flow: column wrap;
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 5px;
+        & li.menu-item {
+            animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+        @for $i from 1 to 10 {
+            li.menu-item:nth-child(#{$i}) { animation-delay: $i * 0.15s; }
+        }
+        @include media-less-than(computer){
+            flex-flow: column nowrap;
+            align-items: space-around;
+            & > li.menu-item.menu-item-has-children {
+                    display: inherit;
+                    align-items: center;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    & a{
+                        width: fit-content;
+                    }
+            }
+            & button{
+                right: -40px;
+                float: none;
+                margin: 0;
+            }
+        }
+    }
+    & .Members-Login{
+        border: 1px solid #333;
+        // margin-top: 0;
+        margin-bottom: 8px;  //3px for ::after height, 5px for ::after margin on other li's
+        transition: 0.4s ease-in;
+        &:hover{
+            & > a{
+                color: white;
+
+            }
+            background-color: $button-background-hover-color;
+            transition: 0.3s ease-out;
+        }
+
+    }
+}
+
+.site-inner {
+    @include media-less-than (tablet){
+        margin-top: calc(0.8rem + 8px + 38.7px + 1.25rem + 0.8rem);
+    }
+}
+
+//  Footer Widgets
+#genesis-footer-widgets{
+    margin: 0 auto;
+    background-color: $footer-area-bg-color;
+}
+.footer-widget-area{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    align-content: flex-start;
+    padding: 0 10%;
+    section.widget.featured-content{
+        flex: 0 1 300px;
+    }
+    section.widget.widget_search{
+        flex: 0 0 100%;
+    }
+}
+ul#menu-footer-menu {
+    display: flex;
+    flex-flow: column wrap;
+    height: 150px;
+    @include media-less-than(computer) {
+        height: unset;
+    }
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-around;
+    padding: 0 30px;
+    & li {
+        flex: 0 0 38px; //adjust this to increase or decrease the vert.spacing between the menu items
+    }
+
+}
+//  Randomly, phone number link styles -------------------
+a[href^="tel:"] {
+    @include media-greater-than(tablet){
+        text-decoration: none;
+    }
+}
+
+//  CONTRACT pages and subpages styles
+//  These are embedded google docs (in an iframe)
+.contract-doc-div {
+    iframe {
+        width: 100%;
+        height: 75vh;
+    }
+}
+
+//bbpress styles -----------------------------------------
+.bbp-breadcrumb {
+    display:none;
+}
+
+#bbpress-forums p.bbp-topic-meta img.avatar, 
+#bbpress-forums ul.bbp-reply-revision-log img.avatar, 
+#bbpress-forums ul.bbp-topic-revision-log img.avatar, 
+#bbpress-forums div.bbp-template-notice img.avatar, 
+#bbpress-forums .widget_display_topics img.avatar, 
+#bbpress-forums .widget_display_replies img.avatar {
+    margin-bottom: -3px;
+}
+
+#bbpress-forums div.bbp-topic-content, 
+#bbpress-forums div.bbp-reply-content {
+    & a {
+        color: #333;
+        border-bottom: 1px solid $link-underline-color;
+        &:hover{
+            color: $link-color;
+        }
+    }
+}
+
+#bbpress-forums {
+    & .bbp-forum-info div.bbp-forum-content{
+        font-size: $font-size-p;
+        line-height: $line-height-std;
+    }
+    & ul.bbp-forums{
+        
+        & .bbp-forum-title{
+            font-size: $font-size-h3;
+        }
+    }
+}
+
+span.bbp-topic-freshness-author{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    & > a.bbp-author-name{
+        margin-top: 4px;
+    }
+}
+
+.bbp_edit_profile_link{
+    border: 1px solid #333;
+    border-radius: 2px;
+    margin: 1rem auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    &:hover{
+        background-color: #333;
+    }
+    a{
+        padding: 1rem 20px;
+        border-bottom: none;
+        width: 100%;
+        &:hover{
+            border-bottom: none;
+            color: #fff;
+        }
+    }
+}
+
+#bbp-user-wrapper{
+    display: flex;
+}
+#bbp-single-user-details{
+    flex: 1 0 auto;
+}
+
+#zhForumWidgetUnderTitle {
+    .widgettitle.widget-title{
+        display: none;
+    }
+    & > .wrap{
+
+    }
+    & form>div{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: flex-end;
+        align-items: stretch;
+        >#bbp_search{
+            flex: 1 1 auto;
+        }
+        >#bbp_search_submit{
+            flex: 0 0 auto;
+        }
+    }
+}
+
+
+#zhForumWidgetBeforeForm {
+    // position: fixed;
+    // top: 100px;
+    // left: 10px;
+    & > .wrap {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        align-content: flex-start;
+        section.widget{
+            flex: 1 1 40%;
+            margin: 20px;
+        }
+        section.widget.bbp_widget_login{
+            flex: 1 0 140px;
+        }
+    }
+}
+
+#zhForumWidgetAfter {
+
+    >.wrap{
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        align-items: flex-start;
+        align-content: flex-start;
+        section.widget{
+            flex: 1 1 40%;
+            margin: 20px;
+        }
+        section.widget.bbp_widget_login{
+            flex: 1 0 140px;
+        }
+    }
+}
+
+
+.bbp-topics-front ul.super-sticky, 
+.bbp-topics ul.super-sticky, 
+.bbp-topics ul.sticky, 
+.bbp-forum-content ul.sticky {
+    @extend p;
+
+}
+
+#bbpress-forums{
+    font-size: $font-size-p;
+    line-height: $line-height-std;
+    margin-bottom: $replace-margin-twenty;
+}
+
+.bbp-form label{
+    font-size: $font-size-breadcrumbs;
+}
+

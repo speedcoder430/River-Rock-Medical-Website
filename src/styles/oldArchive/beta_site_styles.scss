@@ -1,0 +1,164 @@
+//external functions
+@import 'modular-scale';
+//information and functions
+@import 'beta-variables';
+@import 'mixins';
+
+//base-styles like resets, border-box, colors, layout, etc.
+@import 'base-styles';
+
+//other main styles
+@import 'typography-styles';
+
+/*layout*/
+//header
+header h1{
+    width:88%;
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+//body
+.whatIS-container{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    max-width:100%;
+    //border: 2px solid black;
+}
+
+.whatISrow{
+    flex: 0 1 auto;
+    display:flex;
+    flex-flow:column nowrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content:flex-start;
+    /*flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;*/
+    padding:0;
+    margin: 0 auto;
+}
+
+.whatIS-full-width{
+    width:100%;
+}
+
+.whatIStext{
+    display:inline-block;
+    margin: 0 auto;
+    text-align:left;
+    & h1,h2,h3,h4,h5,h6,p,ul,li,img{
+        margin: ms(6) auto;
+    }
+    img{
+        display:flex;
+        justify-content: center;
+    }
+    counter-reset:footnotes;
+}
+
+.whatISinternalCopyControl{
+    //@extend .text;
+    margin: 0 auto;
+    width: 88%;
+    //mobile, leaving room for blockquote jutting out
+    @include media-less-than(mobile){
+        width: 95%;
+    }
+    //this mostly applies to computers
+    max-width: 42em;
+    a.footnotelink {
+        color:black;
+        counter-increment: footnotes;
+        text-decoration:none;
+        border:none;
+        &:after{
+            content:"[" counter(footnotes) "]";
+            font-size: 0.4em;
+            margin-left: 2px;
+            cursor: pointer;
+            position:relative;
+            top: -1.2em;
+            line-height:0;
+
+        }
+        &:hover{
+            background:rgba(0,0,0,0.2);
+            transition: all 0.65s ease-out;
+        }
+        &:focus{
+
+        }
+    }
+}
+
+.whatISheadlineImageDiv{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+
+    @include media-less-than(mobile){
+
+    }
+    img{
+        width:100%;
+        @include media-less-than(mobile){
+            width:150%;
+        }
+    }
+}
+
+.conciergecopybuttondiv{
+    margin: ms(9) auto;
+    text-align:center;
+    a{
+        border:1px solid blue;
+        color:black;
+        text-decoration:none;
+        padding: ms(4) ms(3);
+        transition: all 0.2s ease-out;
+        font-size: ms(0);
+        &:hover{
+            background-color: rgba(0,0,0,0.2);
+            color:blue;
+            font-size: $font-size-h4;
+            transition: all 0.3s ease-out;
+        }
+    }
+}
+
+.footnotesdiv{
+    :target{
+        //border-left: 10px solid red;
+        background-color: rgba(red,0.3);
+        animation: footnoteselected 0.8s linear;
+        animation-iteration-count: 1;
+        animation-delay: 0.4s;
+        font-size:1.5em;
+        line-height:1.5em;
+
+        &:hover{
+            background-color: rgba(red,1);
+            a{color:black;}
+        }
+    }
+    @keyframes footnoteselected{
+        0%{transform: translateX(0vw);}
+        50%{transform:translateX(2vw);}
+        100%{transform:translateX(0vw);}
+    }
+    a:visited{
+        color:blue;
+    }
+}
+
+
+//complex page- or item- specific styles

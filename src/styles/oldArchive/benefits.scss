@@ -1,0 +1,126 @@
+@import 'our-custom-page-resets';
+
+.content{
+    background-color: #e1e1e1;
+}
+
+.benefit.row{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    &:nth-child(odd) {
+        justify-content: flex-end;
+    }
+    @include media-less-than(computer){
+        display: block;
+    }
+    // background-color: #e1e1e1;
+}
+
+.benefit-scene-img-wrap{
+    position: relative;
+    img{margin:0;}
+}
+
+
+.odd .benefit-solid-wrap{
+    background: linear-gradient(80deg, #e1e1e1 0%, #e1e1e1 37%, rgba(0, 15, 237, 0) 57%);
+    @include media-less-than(computer){
+        background: linear-gradient(175deg, rgba(225, 215, 225, 0) 0%, rgba(225, 225, 225, 0) 54%, #e1e1e1 91%);            
+        height: 100%;
+        top: 0;
+    }
+}
+.even .benefit-solid-wrap{
+    background: linear-gradient(100deg, rgba(0, 15, 237, 0) 0%, rgba(0, 15, 237, 0) 43%, #e1e1e1 63%, #e1e1e1 100%);
+    @include media-less-than(computer){
+        background: linear-gradient(185deg, rgba(225, 215, 225, 0) 0%, rgba(225, 225, 225, 0) 54%, #e1e1e1 91%);
+        height: 100%;
+        top: 0;
+    }
+}
+
+.benefit-solid-wrap{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+
+}
+
+
+
+.odd ~ .benefit-description-div{
+    position: absolute;
+    top: 23%;
+    left: 3%;
+    @include media-less-than(computer){
+        position: relative;
+        top: unset;
+        left: unset;
+        margin: 1.5625rem auto;
+        padding: 0 40px;
+        flex-flow: row nowrap;
+        width: 90%;
+    }
+}
+.even ~ .benefit-description-div{
+    position: absolute;
+    top: 23%;
+    right: 3%;
+    @include media-less-than(computer){
+        position: relative;
+        top: unset;
+        right: unset;
+        margin: 1.5625rem auto;
+        padding: 0 40px;
+        flex-flow: row nowrap;
+        width: 90%;
+    }
+
+}
+
+.benefit-description-div{
+    width: 25%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    border-bottom: 5px double #333;
+    opacity: 0;
+    &.animation-triggered{
+        transition: all 1s ease-out;
+        opacity: 1;
+    }
+}
+
+
+.benefit-icon-div{
+    width: 100px;
+    img{margin: 0;}
+}
+
+.benefit-text-div{
+    width: 100%;
+    h2{
+        text-align: center;
+    }
+    p{
+        padding-left: 10%;
+    }
+}
+
+.site-header{
+    background-color: rgba(255,255,255,0.8);
+    &:hover{
+        background-color: rgba(255,255,255,1);
+    }
+}
+
+.page.entry{
+    margin-bottom: 0;
+}

@@ -1,0 +1,13 @@
+.btn.btn--menu-desktop {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  z-index: 9999;
+  @include mobile {
+    display: none;
+  }
+
+  & > img {
+    width: 32px;
+  }
+}

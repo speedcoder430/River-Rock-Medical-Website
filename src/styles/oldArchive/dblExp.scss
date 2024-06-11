@@ -1,0 +1,766 @@
+//this brings us up to full-width within the theme
+//also imports mixins
+//mixin for media queries - computer 1024px, tablet 768, mobile 550, old-mobile 357
+
+
+//*****PASSWORD IS 'TEMP'
+@import 'our-custom-page-resets';
+@import 'flameAnimation';
+.zhContainer {
+  position: relative;
+}
+
+//base styles shared by all, both even and odd - layout, etc.
+.dbl-exp-main-div {
+  // border: 2px solid black;
+  // height: 805.6px;
+  height: 100vh;
+  @include media-less-than(tablet) {
+    height: 100vh;
+  }
+  @include media-less-than(mobile) {
+    height: 100vh;
+  }
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+//top middle
+$top-middle-shape-width: 43%;
+.topMiddleImgDiv {
+  position: absolute;
+  transition: all 0.5s ease-out;
+  width: $top-middle-shape-width;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  @include media-less-than(computer) {
+    width: 75%;
+  }
+  @include media-less-than(tablet) {
+    width: 100%;
+  }
+  img {
+    width: 100%;
+  }
+  &.revealed {
+    opacity: 0;
+    z-index: -1;
+    // top: 0;
+    // left: unset;
+    // right: 0;
+    // transform: none;
+    // @include media-greater-than(tablet) {
+    //   opacity: 0;
+    //   z-index: -1;
+    // }
+  }
+}
+
+@keyframes flashZ {
+  0%    {opacity: 0.2}
+  100%  {opacity: 1}
+}
+
+$top-middle-shape-height: $top-middle-shape-width * .7;
+$flashing-square-size: 8.3vw;
+$flashing-circle-size: 8.6vw;
+$flashing-square-border: 4px solid darkgrey;
+$flashing-circle-border: 4px solid darkgrey;
+.flashingSquareDiv {
+  width: $flashing-square-size;
+  height: $flashing-square-size;
+  border-bottom: $flashing-square-border;
+  border-right: $flashing-square-border;
+  z-index: 5;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotateZ(45deg);
+  top: 19vw;
+  & img {
+    display: none;
+  }
+  @include media-less-than(computer) {
+    top: unset;
+    bottom: 50px;
+    width: 50vw;
+    transform: translateX(-50%);
+    border: none;
+    border-bottom: none;
+    border-right: none;
+    // animation: none;
+    & img {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+  @include media-less-than(mobile) {
+    width: 70vw;
+  }
+  cursor: pointer;
+  animation: flashZ 0.8s ease-out 0s infinite alternate;
+  transition: all 0.5s ease-out;
+  &.revealed {
+    opacity: 0;
+    z-index: -1;
+    animation: none;
+  }
+}
+.flashingCircleDiv {
+  @extend .flashingSquareDiv;
+  width: $flashing-circle-size;
+  height: $flashing-circle-size;
+  border-radius: 50%;
+  transform: translate(-50%, -35%);
+  border: none;
+  border-bottom: $flashing-circle-border;
+
+} 
+
+//upper right
+$top-right-shape-width: 11%;
+.upperrightimgdiv {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $top-right-shape-width;
+  z-index: 1;
+  @include media-less-than(computer) {
+    display: none;
+  }
+  img {
+    width: 100%;
+  }
+}
+.upperRightMobileLanternDiv {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  opacity: 0;
+  z-index: 1;
+  & img {
+    width: 100%;
+  }
+  @include media-less-than(computer) {
+    &.revealed {
+      opacity: 1;
+    }
+  }
+}
+
+$border-div-size: 24vw;
+.upperRightBorderDiv {
+    position: absolute;
+    right:0;
+    top:0;
+    width: $border-div-size;
+    height: $border-div-size;
+    @include media-less-than(computer) {
+      display: none;
+    }
+}
+
+//lower right
+$lower-right-box-width: 29%;
+.lowerrightimgdiv {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 66%;
+  width: $lower-right-box-width;
+  z-index: 1;
+  @include media-less-than(computer) {
+    display: none;
+  }
+  & img.lowerRightMiddle {
+    position: absolute;
+    top: 0;
+  }
+  & img.lowerRightShape {
+    position: absolute;
+    bottom: 0;
+  }
+  & img.lowerRightLantern {
+    position: absolute;
+    bottom: 0;
+    width: auto;
+  }
+}
+.flickerBlurDiv {
+  &.flameOne {
+    top:unset;
+    left:unset;
+    right:52%;
+    bottom:71%;
+    // left: 26.6%;
+    width: 8.6%;
+    height: 11.5%;
+    // width: 12px;
+    // height: 17px; 
+    &>div {
+      animation-delay: 2000ms; 
+      animation-duration: 4000ms;
+    }
+  }
+  &.flameTwo {
+    top:unset;
+    left:unset;
+    right:22%;
+    bottom:71%;
+    // left: 26.6%;
+    width: 8.6%;
+    height: 11.5%;
+    // width: 12px;
+    // height: 17px; 
+    &>div {
+      animation-delay: 150ms; 
+    }
+  }
+  &.flameThree {
+    top:unset;
+    left:unset;
+    right:66%;
+    bottom:53%;
+    // left: 26.6%;
+    width: 8.6%;
+    height: 11.5%;
+    // width: 12px;
+    // height: 17px; 
+    &>div {
+      animation-delay: 1000ms; 
+    }
+  }
+}
+.lowerRightBorderDiv {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: $border-div-size;
+  height: $border-div-size;
+  @include media-less-than(computer) {
+    display: none;
+  }
+}
+
+//left img (dbl exp itself)
+$dbl-exp-img-height: 100%;
+$dbl-exp-img-revealed-height: 60%;
+.dblexpimgdiv {
+  position: absolute;
+  left:0;
+  height: $dbl-exp-img-height;
+  width: auto; //edge fallback - will squish. Could change to width: 600px;
+  width: max-content; //this allows to maintain width and be cut off by smaller screens. Not supported on Edge.
+  z-index: 1;
+  transition: height 0.5s ease-out;
+  &.revealed {
+    height: $dbl-exp-img-revealed-height;
+    @include media-less-than(tablet) {
+      height: $dbl-exp-img-revealed-height;
+    }
+  }
+
+  img {
+    width: auto;
+    height: 100%;
+    // position: absolute;
+    &.LQIP {
+      width: 500px;
+      opacity: 1;
+      transform: translateX(-100%);
+      z-index: 2;
+    }
+    &.lazyload,&.lazyloading {
+      opacity: 0;
+    }
+    &.lazyloaded {
+      opacity: 1;
+      transition: opacity 1s linear;
+      transition-delay: 1s;
+      z-index: 1;
+      &+img.LQIP {
+        opacity: 0;
+        transition: opacity 1s linear;
+        transition-delay: 1s;
+      }
+    }
+  }
+}
+.myDoctorQuoteDiv {
+  position: absolute;
+  width: 16%;
+  top: 10%;
+  left: 14%;
+  transform: translateX(-50%);
+  border: none;
+  z-index: 15;
+  @include media-less-than(computer) {
+    top: 40%;
+    left: unset;
+    right: -10%;
+    width: 30%;
+  }
+  @include media-less-than(tablet) {
+    width: 35%;
+  }
+  @include media-less-than(mobile) {
+    top:  24%;
+    left: 50vw;
+    transform: translateX(-50%);
+    width: 43%;
+  }
+  & h3 {
+    text-align: center;
+    border: none;
+    & span {
+
+    }
+  }
+  &:before,&:after {
+    font-weight: 500;
+    color: black;
+  }
+  &:before {
+    
+  }
+  &:after {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  &.revealed {
+    opacity: 0;
+  }
+}
+
+
+//lanterns get CSS glow/flame animation
+//even vs odd (circle vs triangle) styles
+
+.zhContainer {
+  &:nth-child(odd) {
+    .topMiddleImgDiv {
+    }
+    .upperrightimgdiv {
+    }
+    .upperRightBorderDiv {
+      transform: translate(46%, -51%);
+      border: 4px solid darkgreen;
+      border-radius: 50%;
+    }
+    .lowerrightimgdiv {
+      & img.lowerRightMiddle {
+        right: 40%;
+        width: 50%;
+      }
+      & img.lowerRightShape {
+        right: 20%;
+        width: 70%;
+      }
+      & img.lowerRightLantern {
+        height: 100%;
+        right: $top-right-shape-width;    //line up lantern with top image
+        transform: translateX($top-right-shape-width);
+      }
+    }
+    .lowerRightBorderDiv {
+      transform: rotateZ(45deg) translate(81%, 20%);
+      border: 4px solid darkgreen;
+    }
+  }
+  &:nth-child(even) {
+    .topMiddleImgDiv {
+    }
+    .upperrightimgdiv {
+    }
+    .upperRightBorderDiv {
+      transform: rotateZ(45deg) translate(0, -81%);
+      border: 4px solid darkgreen;
+    }
+    .lowerrightimgdiv {
+      & img.lowerRightMiddle {
+        right: 46%;
+        width: 32%;
+        top: -7%
+      }
+      & img.lowerRightShape {
+        left: 0%;
+        width: 64%;
+      }
+      & img.lowerRightLantern {
+        right: 59%;  
+        height: 80%;  //line up lantern with top image
+      }
+    }
+    .lowerRightBorderDiv {
+      transform: translate(46%, 51%);
+      border: 4px solid darkgreen;
+      border-radius: 50%;
+    }
+
+  }
+}
+
+//Text Vignette Section
+.vignetteTextDiv {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: 30em;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease-in;
+  transition-delay: 0.3s;
+  max-height: 351px;
+  overflow-y: auto;
+  @include media-less-than(computer) {
+    max-height: unset;
+    overflow-y: unset;
+    position: relative;
+    top: unset;
+    left: unset;
+    width: 100%;
+    transform: none;
+    padding: 1rem 1.5rem;
+    opacity: 1;
+    visibility: visible;
+  }
+  & img {
+    float: left;
+    margin-right: 10px;
+    width: 4rem;
+    @include media-less-than(computer) {
+      float: none;
+      margin: 1rem auto;
+      display: block;
+    }
+  }
+  & h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &.revealed {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+  }
+}
+
+//bars and shields
+.barsAndShields {
+  width: 66%;
+  display: flex;
+  flex-flow: column nowrap;
+  position: absolute;
+  top: $dbl-exp-img-revealed-height; //same as height of dbl exp img
+  left: 0;
+  z-index: 20;
+  transform: translateX(-200%);
+  & .zRow {
+    transform: translateX(-200%);
+  }
+  transition: 0.0s ease-out;
+  transition-delay: 0.0s;
+  @include media-less-than(computer) {
+    width: 80%;
+  }
+  &.revealed {
+    transform: none;
+    & .zRow {
+      transform: none;
+    }
+  }
+}
+
+//animate each bar on reveal
+//on mobile, end with shields visible
+//on desktop, shields visible on hover.
+$bar-slide-animation-base: 0.3s;
+$bar-slide-animation-increment: 0.2s;
+$bar-reveal-timing: 0.3s;
+.zRow {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  transition: 0.5s ease-out;
+  & img {
+    clear: unset;
+    margin: 2px 2px;
+    width: 25px;
+    height: 25px;
+    z-index: -1;
+    
+  }
+  &.one {
+    transition-delay: $bar-slide-animation-base + $bar-slide-animation-increment*0;
+    &:hover {
+      .bar {
+        background-color: transparent;
+        transition: $bar-reveal-timing ease-out;
+      }
+      .bar,.connector,.shieldGroup {
+        opacity: 1;
+        transition: $bar-reveal-timing ease-out;
+      }
+    }
+  }
+  &.two {
+    transition-delay: $bar-slide-animation-base + $bar-slide-animation-increment*1;
+    &:hover {
+      .bar {
+        background-color: transparent;
+        transition: $bar-reveal-timing ease-out;
+      }
+      .bar,.connector,.shieldGroup {
+        opacity: 1;
+        transition: $bar-reveal-timing ease-out;
+      }
+    }
+  }
+  &.three {
+    transition-delay: $bar-slide-animation-base + $bar-slide-animation-increment*2;
+    &:hover {
+      .bar {
+        background-color: transparent;
+        transition: $bar-reveal-timing ease-out;
+      }
+      .bar,.connector,.shieldGroup {
+        opacity: 1;
+        transition: $bar-reveal-timing ease-out;
+      }
+    }
+  }
+  &.four {
+    transition-delay: $bar-slide-animation-base + $bar-slide-animation-increment*3;
+    &:hover {
+      .bar {
+        background-color: transparent;
+        transition: $bar-reveal-timing ease-out;
+      }
+      .bar,.connector,.shieldGroup {
+        opacity: 1;
+        transition: $bar-reveal-timing ease-out;
+      }
+    }
+  }
+  &.five {
+    transition-delay: $bar-slide-animation-base + $bar-slide-animation-increment*4;
+    &:hover {
+      .bar {
+        background-color: transparent;
+        transition: $bar-reveal-timing ease-out;
+      }
+      .bar,.connector,.shieldGroup {
+        opacity: 1;
+        transition: $bar-reveal-timing ease-out;
+      }
+    }
+  }
+  &.six {
+    transition-delay: $bar-slide-animation-base + $bar-slide-animation-increment*5;
+    &:hover {
+      .bar {
+        background-color: transparent;
+        transition: $bar-reveal-timing ease-out;
+      }
+      .bar,.connector,.shieldGroup {
+        opacity: 1;
+        transition: $bar-reveal-timing ease-out;
+      }
+    }
+  }
+  &.seven {
+    transition-delay: $bar-slide-animation-base + $bar-slide-animation-increment*6;
+    &:hover {
+      .bar {
+        background-color: transparent;
+        transition: $bar-reveal-timing ease-out;
+      }
+      .bar,.connector,.shieldGroup {
+        opacity: 1;
+        transition: $bar-reveal-timing ease-out;
+      }
+    }
+  }
+  &.eight {
+    transition-delay: $bar-slide-animation-base + $bar-slide-animation-increment*7;
+    &:hover {
+      .bar {
+        background-color: transparent;
+        transition: $bar-reveal-timing ease-out;
+      }
+      .bar,.connector,.shieldGroup {
+        opacity: 1;
+        transition: $bar-reveal-timing ease-out;
+      }
+    }
+  }
+}
+.line {
+  margin: 0;
+}
+
+.bar { //defaults
+  min-height: 16px;
+  min-width: 5px;
+  flex: 0 0 40%; //default
+  display: flex;
+  flex-flow: row nowrap; 
+  justify-content: flex-start;
+  background-color: black; //default
+  &.one {
+    background-color: #190c08;
+    flex: 0 0 60%;
+  }
+  &.two {
+    background-color: #15d3cb;
+    flex: 0 0 80%;
+  }
+  &.three {
+    background-color: #a59a94;
+    flex: 0 0 40%;
+  }
+  &.four {
+    background-color: #7bdff2;
+    flex: 0 0 50%;
+  }
+  &.five {
+    background-color: #776054;
+    flex: 0 0 53%;
+  }
+  &.six {
+    background-color: #17cce8;
+    flex: 0 0 62%;
+  }
+  &.seven {
+    background-color: #5e3309;
+    flex: 0 0 35%;
+  }
+  &.eight {
+    background-color: #17c5e8;
+    flex: 0 0 51%;
+  }
+}
+.connector {
+  margin-left: 10px;
+  margin-right: 10px;
+  flex: 1 1 60%; //will shink/grow to take up remaining space
+  border: 1px solid grey;
+  opacity: 0;
+  @include media-less-than(tablet) {
+    opacity: 1;
+  }
+}
+.shieldGroup {
+  flex: 0 0 33%;
+  display: flex;
+  flex-flow: row nowrap;
+  opacity: 0;
+  @include media-less-than(tablet) {
+    opacity: 1;
+  }
+  // margin-left: 5px;
+}
+.shieldZ {
+  background-color: rgb(196, 186, 167);
+  border-radius: 5px;
+  width: 14px;
+  height: 9px;
+  margin: 3.4px 2px;
+}
+
+@mixin theBars($widthList) {
+    & .barsAndShields {
+      .bar {
+        &.one {
+          @if (length($widthList) < 1) {
+            flex: 0 0 0%;
+          } @else {
+            flex: 0 0 nth($widthList,1) * .66;
+
+          }
+        }
+        &.two {
+          @if (length($widthList) < 2) {
+            flex: 0 0 0%;
+          } @else {
+            flex: 0 0 nth($widthList,2) * .66;
+
+          }
+        }
+        &.three {
+          @if (length($widthList) < 3) {
+            flex: 0 0 0%;
+          } @else {
+            flex: 0 0 nth($widthList,3) * .66;
+
+          }
+        }
+        &.four {
+          @if (length($widthList) < 4) {
+            flex: 0 0 0%;
+          } @else {
+            flex: 0 0 nth($widthList,4) * .66;
+
+          }
+        }
+        &.five {
+          @if (length($widthList) < 5) {
+            flex: 0 0 0%;
+          } @else {
+            flex: 0 0 nth($widthList,5) * .66;
+
+          }
+        }
+        &.six {
+          @if (length($widthList) < 6) {
+            flex: 0 0 0%;
+          } @else {
+            flex: 0 0 nth($widthList,6) * .66;
+
+          }
+        }
+        &.seven {
+          @if (length($widthList) < 7) {
+            flex: 0 0 0%;
+          } @else {
+            flex: 0 0 nth($widthList,7) * .66;
+
+          }
+        }
+        &.eight {
+          @if (length($widthList) < 8) {
+            flex: 0 0 0%;
+          } @else {
+            flex: 0 0 nth($widthList,8) * .66;
+
+          }
+        }
+      }
+    }
+}
+
+@mixin barSetup ($numOfSections, $wList) {
+  @for $i from 1 through $numOfSections {
+    &:nth-of-type(#{$i}) {
+      @include theBars(nth($wList,$i));
+    }
+  }
+
+}
+.zhContainer {
+  //30% minimum or won't fit shields
+  //90% max - may need to reduce in order to fit more external shields?
+  $theBarWidths: (
+    (80%, 40%, 55%, 40%, 30%, 90%, 70%, 40%),
+    (30%, 35%, 30%, 40%, 50%, 60%, 70%, 80%),
+    (80%, 70%, 60%, 50%, 40%, 35%, 30%, 55%),
+    (33%, 30%, 35%, 65%, 90%, 80%, 90%, 30%),
+  );
+  @include barSetup(4, $theBarWidths);
+}

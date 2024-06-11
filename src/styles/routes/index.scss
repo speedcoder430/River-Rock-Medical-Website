@@ -1,0 +1,217 @@
+@import './menu/index.scss';
+@import './patients/index.scss';
+@import './purpose/index.scss';
+@import './analysis/index.scss';
+@import './contact/index.scss';
+@import './strengths/index.scss';
+@import './benefits/index.scss';
+@import './values/index.scss';
+@import './services/index.scss';
+@import './faq/index.scss';
+
+.switch-wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  & > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  transition: all var(--transition-speed);
+
+  .content-wrapper {
+    @extend .v-flex;
+    justify-content: center;
+    flex: 1;
+    @include mobile {
+      justify-content: flex-start;
+      flex: none;
+      padding-bottom: 10%;
+    }
+  }
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin: auto;
+    box-sizing: border-box;
+    &.container {
+      max-width: 1170px;
+    }
+    @include mobile {
+      padding-top: $header-height;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+  &__tip {
+    font-family: $primary-font;
+    font-size: 13px;
+    font-size: 1.3rem;
+    font-weight: 300;
+    position: absolute;
+    top: 37%;
+    right: 57px;
+    right: 5.7rem;
+    color: $grey;
+    letter-spacing: 9px;
+    letter-spacing: 0.9rem;
+    transform-origin: 100% 50%;
+    transform: rotate(-90deg) translateX(50%);
+    @include mobile {
+      display: none;
+    }
+  }
+  &__quote {
+    @extend .t-center;
+    font-size: 30px;
+    font-size: 2.7rem;
+    font-family: $acaslon-font;
+    font-style: italic;
+    color: $primary;
+    // padding-left: 5%;
+    padding-bottom: 10%;
+    margin-top: 3%;
+    @include mobile {
+      padding-left: 16%;
+      padding-right: 16%;
+    }
+  }
+  h5 {
+    font-family: $primary-font;
+    font-weight: bold;
+    font-size: 21px;
+    font-size: 2.1rem;
+  }
+  .option {
+    @extend .t-center;
+    font-size: 30px;
+    font-size: 2.7rem;
+    font-family: $acaslon-font;
+    font-style: italic;
+    color: $secondary;
+    background-color: rgba(219, 212, 204, 0.28);
+    padding: 6px 0;
+    padding: 0.6rem 0;
+    margin-top: 20px;
+    margin-top: 2rem;
+    cursor: pointer;
+    &--selected {
+      background-color: black;
+      color: $lightgrey;
+    }
+    &--hovered {
+      background-color: black;
+      color: $lightgrey;
+    }
+  }
+  .goto-prev, .goto-next {
+    position: fixed;
+    top: 50vh;
+    z-index: 10;
+    img {
+      width: 40px;
+      @include mobile {
+        width: 20px;
+      }
+    }
+  }
+  .goto-prev {
+    left: 10px;
+  }
+  .goto-next {
+    right: 10px;
+  }
+}
+
+.slide-left {
+  .page {
+    &-enter {
+      left: 100%;
+    }
+    &-exit, &-enter-active {
+      left: 0;
+    }
+    &-exit-active {
+      left: -100%;
+    }
+  }
+}
+
+.slide-right {
+  .page {
+    &-enter {
+      left: -100%;
+    }
+    &-exit, &-enter-active {
+      left: 0;
+    }
+    &-exit-active {
+      left: 100%;
+    }
+  }
+}
+
+.zoom-in {
+  .page {
+    &-enter {
+      transform: scale(0);
+      opacity: 1;
+    }
+    &-exit, &-enter-active {
+      transform: scale(1);
+      opacity: 1;
+    }
+    &-exit-active {
+      transform: scale(3) translate(var(--zoom-in-x-adjust), var(--zoom-in-y-adjust));
+      opacity: 0;
+    }
+  }
+}
+
+.zoom-out {
+  .page {
+    &-enter {
+      transform: scale(5);
+      opacity: 0;
+    }
+    &-exit, &-enter-active {
+      transform: scale(1);
+      opacity: 1;
+    }
+    &-exit-active {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+}
+
+.text-content {
+  color: $dark;
+  font-family: $primary-font;
+  font-weight: 300;
+  font-size: 14px;
+  font-size: 1.5rem;
+  padding-right: 28%;
+  margin: 16px 0 10px 0;
+  margin: 1.6rem 0 1rem 0;
+  @include mobile {
+    // font-size: 2rem;
+  }
+}
+
+.block--image {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}

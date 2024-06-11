@@ -1,0 +1,45 @@
+.section.section--strengths {
+  .content {
+    @extend .flex;
+    padding-top: 5%;
+    @include mobile {
+      display: block;
+    }
+  }
+  .block {
+    &--image {
+      position: relative;
+      width: 43.59%;
+      margin-left: 5%;
+      @include mobile {
+        margin: auto;
+      }
+      .strengths-cover {
+        width: 58%;
+        margin-left: 30%;
+        @include mobile {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+    }
+    &--text {
+      @extend .v-flex;
+      flex: 1;
+      padding-right: 5%;
+      color: $dark;
+      @include mobile {
+        padding-top: 5%;
+        padding-left: 18%;
+        padding-right: 18%;
+      }
+      .text-content {
+        margin: 6px 0 10px 0;
+        margin: 0.6rem 0 1rem 0;
+        @include mobile {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}

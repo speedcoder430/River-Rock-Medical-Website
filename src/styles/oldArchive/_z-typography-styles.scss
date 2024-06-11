@@ -1,0 +1,263 @@
+//typography-styles
+
+:root {
+  font-size: calc(1vw + 1vh + 1.5vmin);
+//  below for screens bigger than or equal to a computer
+  @include desktop { //was greater-than(tablet)
+      font-size: 20px;
+  }
+  @include tablet { //was greater-than(tablet)
+      font-size: calc(1vw + 1vh - 0.4vmin);
+  }
+}
+
+
+//implementation of modular scale
+//readme found at: https://github.com/modularscale/modularscale-sass/blob/2.x/readme.md
+$ms-base: 1rem,1.5rem;
+$ms-ratio: $major-third;
+@debug ms-list(0, 14, $ms-base, $ms-ratio);
+
+//used in conjunction with: http://www.modularscale.com/?1&rem&1.5,1.25,2&sass&text
+//used for size of p and related styles
+$line-height-base: ms(3);
+$font-size-base: 0;
+
+//line height will just be up two steps on the modular scale
+$line-height-std: 1.25; 
+//or up 4 steps
+$line-height-lg: $line-height-std * 1.25;
+//or up 6 steps
+$line-height-xl: $line-height-lg * 1.25;
+//or down two steps
+$line-height-sm: 1 / $line-height-std;
+
+$font-size-p: ms($font-size-base - 2);
+$font-size-h1: ms($font-size-base + 8);
+$font-size-h2: ms($font-size-base + 6);
+$font-size-h3: ms($font-size-base + 3);
+$font-size-h4: ms($font-size-base + 2);
+$font-size-h5: ms($font-size-base + 1);
+$font-size-h6: ms($font-size-base - 0);
+$font-size-dropcap: ms($font-size-base + 15);
+$margin-top-dropcap-ms: -1;
+$line-height-dropcap-ms: 10;
+
+$font-size-pullquote: ms($font-size-base - 2);
+$font-size-nav-menu:  ms($font-size-base - 4);
+$font-size-breadcrumbs:  ms($font-size-base - 3);
+
+$header-margin-bottom: $line-height-std * $font-size-h3;
+$p-margin-bottom: $line-height-std * $font-size-p;
+//??consider line-height-sm
+$breadcrumb-margin-bottom: $line-height-sm * $font-size-breadcrumbs;
+$replace-margin-thirty: $p-margin-bottom;
+
+$replace-margin-twenty: (($replace-margin-thirty / 1.25) / 1.25);
+$replace-margin-forty: ($replace-margin-thirty) * 1.25;
+$replace-margin-sixty: $replace-margin-thirty * 1.25 * 1.25;
+
+$replace-margin-twelve: $replace-margin-twenty / 1.25 / 1.25;
+$replace-margin-sixteen: $replace-margin-twenty / 1.25;
+$replace-margin-ten: $breadcrumb-margin-bottom;
+$replace-margin-eight: $replace-margin-ten / 1.25;
+$replace-margin-six: $replace-margin-eight / 1.25;
+
+//?header margin bottom to replace margin 60px or 2*p-margin-bottom?
+
+
+//all styles that are 1.4rem in atmosphere pro theme should become
+//font-size: $font-size-breadcrumbs
+//need to change all margin-tops and bottoms to be in with vertical rhythm.
+//probably $font-size-p or $font-size-breadcrumbs
+
+//------------------------
+body > div {
+    font-size: ms(0);
+}
+
+body {
+	// background-color: #eee;
+	// color: #333;
+	// font-family: 'Lato', sans-serif;
+	// font-size: 20px;
+	// font-size: 2rem;
+	// font-weight: 300;
+	// line-height: 1.625;
+    // margin: 0;
+    font-size: $font-size-p;
+    font-weight: 400;
+    line-height: $line-height-std;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    // font-family: 'Lato', sans-serif;
+	// font-weight: 400;
+	// line-height: 1.2;
+	// margin: 0 0 20px;
+    line-height: $line-height-std;
+    // margin-bottom: $header-margin-bottom;
+    margin-bottom: $replace-margin-twenty;
+}
+
+
+p{
+    line-height: $line-height-std;
+    //not sure if $line-height-lg or $line-height-std looks better
+    //consider std with smaller max-width for .content
+    margin-bottom: $p-margin-bottom; //$fontsizep * line-height-std
+    font-size: $font-size-p;
+}
+
+h1{
+    font-size: $font-size-h1;
+}
+
+h2{
+    font-size: $font-size-h2;
+}
+
+h3{
+    font-size: $font-size-h3;
+}
+
+h4{
+    font-size: $font-size-h4;
+}
+
+.entry-content h4 {
+    font-size: $font-size-p;
+    margin-top: $replace-margin-forty;
+}
+
+h5{
+    font-size: $font-size-h5;
+}
+
+h6{
+    font-size: $font-size-h6;
+}
+
+
+span.dropCap{
+    font-weight: 300;
+    font-size: $font-size-dropcap; //ms(15)
+    line-height:ms($line-height-dropcap-ms);
+    margin-top: ms($margin-top-dropcap-ms);
+    float:left;
+    color: $primary;
+    &.w{
+        font-size: ms(14);
+        line-height: ms($line-height-dropcap-ms - 2);
+        margin-top: ms($margin-top-dropcap-ms - 1);
+    }
+    &.t{
+        font-size: ms(16);
+        line-height: ms($line-height-dropcap-ms - 2);
+        margin-top: ms($margin-top-dropcap-ms - 1);
+    }
+}
+
+
+$pqpadding: ms(2);
+
+blockquote{
+    font-size: $font-size-pullquote;
+    line-height: $line-height-sm;
+    padding: ($line-height-std * $font-size-pullquote) $pqpadding;
+    border-left: 2px solid #ddd;
+}
+
+.pullquote{
+    width: 45%;
+    font-size: $font-size-pullquote;
+    font-weight: 300;
+    font-style: italic;
+    @include desktop {
+        // font-size: $font-size-h3;
+        // font-size: $font-size-h2;
+        padding: ($line-height-std * $font-size-pullquote)/3 $pqpadding/2;
+    }
+    line-height: $line-height-std;
+    padding: ($line-height-std * $font-size-pullquote)/4 $pqpadding/2;
+    //float:left;
+    
+    border-left: 2px solid $grey;
+    border-right: 2px solid $grey;
+    
+    quotes: '\201C' '\201D' '\2018' '\2019'; //these are the escape characters for smart quotes and single quotes 
+
+    &:before{
+        content: '“';
+        color: $primary;
+        font-size: ms(8);
+        line-height: ms(4);
+    }
+    &:after{
+        // content: close-quote;
+    }
+}
+
+
+.pqleft{
+    @extend .pullquote;
+    float:left;
+    //in combination with the padding, the following code means that
+    //the quote **text** will start even with the rest of the text <p>
+    //but the border line will jut out to the left 
+    //but for mobile, the border will be even with the <p> text and the pq text will be indented
+    //consider this:
+    margin: 0 $font-size-pullquote 0 0;  //margin-left is 0 (for mobile-first)
+
+    $pqshiftleft: - $pqpadding;
+    @include tablet {
+        margin: 0 $font-size-pullquote 0 $pqshiftleft; //margin-left is negative $pqpadding if screen size > mobile 
+    }
+    // @include media-greater-than(910px){
+    //     margin: 0 $font-size-pullquote 0 $pqshiftleft*2;
+    // }
+    //above may or may not be needed if font-size calc() media query is greater than tablet
+    @include desktop {
+        margin: 0 $font-size-pullquote 0 ms(18)*-1;
+    }
+    
+}
+
+.pqright{
+    @extend .pullquote;
+    float: right;
+    //in combination with the padding, the following code means that
+    //the quote **text** will start even with the rest of the text <p>
+    //but the border line will jut out to the right
+    //but for mobile, the border will be even with the <p> text and the pq text will be indented
+    //consider this:
+    margin: 0 0 0 $font-size-pullquote;  //margin-right is 0 (for mobile-first)
+    $pqshiftright: $pqpadding;
+    @include tablet {
+        margin: 0 $pqshiftright 0 $font-size-pullquote; //margin-right is $pqpadding if screen size > mobile 
+    }
+    // @include media-greater-than(910px){
+    //     margin: 0 $font-size-pullquote 0 $pqshiftleft*2;
+    // }
+    //above may or may not be needed if font-size calc() media query is greater than tablet
+    @include desktop {
+        margin: 0 ms(18)*-1 0 $font-size-pullquote;
+    }
+}
+
+.pqcenter{
+    @extend .pullquote;
+    display:block;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    &:after{
+        clear:both;
+    }
+}

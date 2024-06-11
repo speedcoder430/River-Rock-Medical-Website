@@ -1,0 +1,54 @@
+.section.section--values {
+  .content {
+    @extend .flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex: 1;
+    position: relative;
+    @include mobile {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      align-content: flex-start;
+      flex: none;
+      padding: 5% 0;
+    }
+  }
+  .box {
+    margin: 15px;
+    padding: 3% 4%;
+    width: 30%;
+    height: 35%;
+    border: 1px solid $primary;
+    z-index: 10;
+    @include mobile {
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .text-content {
+      padding-right: unset;
+      margin-top: 16px;
+      margin-top: 1.6rem;
+      font-size: 1.5rem;
+    }
+  }
+  .values-cover {
+    @extend .a-center;
+    width: 430px;
+    margin-left: -4px;
+    margin-top: 4px;
+    z-index: 1;
+    @include mobile {
+      display: none;
+    }
+  }
+  .section__quote {
+    padding-bottom: 4%;
+  }
+}

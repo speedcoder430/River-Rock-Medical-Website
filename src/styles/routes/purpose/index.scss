@@ -1,0 +1,53 @@
+.section.section--purpose {
+  .content {
+    @extend .flex;
+    padding-top: 5%;
+    @include mobile {
+      display: block;
+    }
+  }
+  .block {
+    &--image {
+      position: relative;
+      width: 43.59%;
+      margin-left: 5%;
+      @include mobile {
+        margin: auto;
+        width: 80%;
+      }
+      .purpose-cover {
+        width: 80%;
+        margin-left: 10%;
+      }
+    }
+    &--text {
+      @extend .v-flex;
+      flex: 1;
+      padding-right: 5%;
+      color: $dark;
+      @include mobile {
+        padding-top: 5%;
+        padding-left: 16%;
+        padding-right: 16%;
+      }
+      .text-content {
+        @include mobile {
+          padding-right: 0;
+        }
+        i {
+          font-family: $acaslon-font;
+          font-size: 18px;
+          font-size: 1.8rem;
+          font-weight: $semibold;
+          color: $dark;
+        }
+      }
+    }
+  }
+  .section__quote {
+    @include mobile {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+  }
+}
