@@ -5,7 +5,7 @@
   "dependencies": {
     "@react-spring/web": "^9.7.3",
     "d3-ease": "^3.0.1",
-    "firebase-tools": "^10.0.0",
+    "firebase-tools": "^12.4.5",
     "framer-motion": "^11.2.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
