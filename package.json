@@ -3,24 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase-tools": "^7.6.0",
-    "node-sass": "^4.12.0",
-    "react": "^16.9.0",
-    "react-addons-css-transition-group": "^15.6.2",
-    "react-dom": "^16.9.0",
-    "react-redux": "^7.1.1",
-    "react-router-dom": "^5.1.2",
-    "react-router-transition": "^1.4.0",
-    "react-scripts": "3.1.2",
+    "@react-spring/web": "^9.7.3",
+    "d3-ease": "^3.0.1",
+    "firebase-tools": "^10.0.0",
+    "framer-motion": "^11.2.10",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-move": "^6.5.0",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.23.1",
+    "react-scripts": "^5.0.1",
     "react-transition-group": "^4.3.0",
-    "redux": "^4.0.4"
+    "react-transition-group-react-18": "^4.5.3",
+    "redux": "^4.1.2",
+    "sass": "^1.43.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "css": "node-sass --output-style compact --source-map true --output ./build/static/css ./src/styles/cases.scss && node-sass --output-style compact --source-map true --output ./build/static/css ./src/styles/content_styles.scss",
+    "css": "sass ./src/styles/cases.scss:./build/static/css/cases.css --style compact --source-map",
     "bd": "yarn build && npm run css && firebase deploy"
   },
   "eslintConfig": {

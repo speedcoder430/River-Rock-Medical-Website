@@ -1,6 +1,6 @@
-import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { TransitionGroup, CSSTransition, SwitchTransition } from 'react-transition-group-react-18';
 
 import Menu from './menu';
 import Patients from './patients';
@@ -12,66 +12,66 @@ import Benefits from './benefits';
 import Values from './values';
 import Services from './services';
 import Faq from './faq';
+
 import { getPrevPath } from './paths';
 
-export default class AnimatedRoute extends React.Component {
-  static getDerivedStateFromProps(props, state) {
-    if (props.location.pathname !== state.pathname) {
-      let transitionClassName = 'slide-left';
-      if (state.pathname === '/menu') {
-        transitionClassName = 'zoom-in';
-      } else if (props.location.pathname === '/menu') {
-        transitionClassName = 'zoom-out';
-      } else if (props.location.pathname === getPrevPath(state.pathname)) {
-        transitionClassName = 'slide-right';
-      }
+const transitionSpeed = 800;
 
-      return {
-        transitionClassName,
-        pathname: props.location.pathname,
-      };
-    }
-
-    return null;
+const getTransitionClassName = (locationPathname, prevPathname) => {
+  if (locationPathname === prevPathname) {
+    return 'slide-right';
+  } else if (prevPathname === '/menu') {
+    return 'zoom-in';
+  } else if (locationPathname === '/menu') {
+    return 'zoom-out';
+  } else if (locationPathname === getPrevPath(prevPathname)) {
+    return 'slide-right';
+  } else {
+    return 'slide-left';
   }
+};
 
-  constructor (props) {
-    super(props);
-    this.state = {
-      transitionClassName: 'slide-left',
-      pathname: props.location.pathname,
-    };
-    this.transitionSpeed = 1200;
-    document.documentElement.style.setProperty('--transition-speed', this.transitionSpeed + 'ms');
-  }
+const AnimatedRoute = () => {
+  const location = useLocation();
+  const [animatedRouteState, setAnimatedRouteState] = useState({
+    transitionClassName: '',
+    pathname: location.pathname,
+  });
 
+  useEffect(() => {
+    document.documentElement.style.setProperty('--transition-speed', `${transitionSpeed}ms`);
+    const transitionClassName = getTransitionClassName(location.pathname, animatedRouteState.pathname);
+    setAnimatedRouteState({
+      transitionClassName,
+      pathname: location.pathname,
+    });
+  }, [location.pathname]);
 
-  render() {
-    const { location } = this.props;
-    const { transitionClassName } = this.state;
-
-    return (
-      <TransitionGroup className={transitionClassName}>
+  return (
+    <TransitionGroup className={animatedRouteState.transitionClassName}>
+      <SwitchTransition>
         <CSSTransition
-          timeout={this.transitionSpeed}
-          classNames="page"
+          timeout={transitionSpeed}
+          classNames={"page"}
           key={location.key}
         >
-          <Switch location={location}>
-            <Route exact path="/menu" component={Menu} />
-            <Route exact path="/" component={Patients} />
-            <Route exact path="/purpose" component={Purpose} />
-            <Route exact path="/analysis" component={Analysis} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/strengths" component={Strengths} />
-            <Route exact path="/benefits" component={Benefits} />
-            <Route exact path="/values" component={Values} />
-            <Route exact path="/services" component={Services} />
-            <Route exact path="/faq" component={Faq} />
-            <Redirect to="/" />
-          </Switch>
+          <Routes location={location}>
+            <Route path="/menu" element={<Menu />} />
+            <Route path="/" element={<Patients />} />
+            <Route path="/purpose" element={<Purpose />} />
+            <Route path="/analysis" element={<Analysis />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/strengths" element={<Strengths />} />
+            <Route path="/benefits" element={<Benefits />} />
+            <Route path="/values" element={<Values />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/faq" element={<Faq />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </CSSTransition>
-      </TransitionGroup>
-    );
-  }
-}
+      </SwitchTransition>
+    </TransitionGroup>
+  );
+};
+
+export default AnimatedRoute;

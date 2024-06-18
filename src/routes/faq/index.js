@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import { getPrevPath, getNextPath } from '../paths';
 import { MenuButton, Header } from '../../components';
@@ -78,64 +78,58 @@ const options = [
     </div>
   },
 ];
+const Faq = () => {
+  const [optionIndex, setOptionIndex] = useState(-1);
+  const location = useLocation();
+  const prevPath = getPrevPath(location.pathname);
+  const nextPath = getNextPath(location.pathname);
 
-export default class Faq extends React.Component {
-  state = {
-    optionIndex: -1,
-  }
-
-  handleClickOption = (optionIndex) => () => {
-    if (this.state.optionIndex !== optionIndex) {
-      this.setState({ optionIndex });
+  const handleClickOption = (index) => {
+    if (optionIndex === index) {
+      setOptionIndex(-1);
+    } else {
+      setOptionIndex(index);
     }
-    else {
-      this.setState({
-        optionIndex: -1
-      });
-    }
-  }
+  };
 
-  render() {
-    const { optionIndex } = this.state;
-    const prevPath = getPrevPath(this.props.location.pathname);
-    const nextPath = getNextPath(this.props.location.pathname);
-    return (
-      <div className="section section--faq">
-        <Header>FAQ</Header>
-        <div className="section__content container">
-          {!!prevPath && (
-            <Link to={prevPath} className="goto-prev">
-              <img src="/images/left-arrow.svg" alt="link to previous page" />
-            </Link>
-          )}
-          {!!nextPath && (
-            <Link to={nextPath} className="goto-next">
-              <img src="/images/right-arrow.svg" alt="link to next page" />
-            </Link>
-          )}
-          <MenuButton />
-          <div className="content">
-            <h5>FAQ</h5>
-            <div className="options-content">
-              {options.map((option, index) => (
+  return (
+    <div className="section section--faq">
+      <Header>FAQ</Header>
+      <div className="section__content container">
+        {!!prevPath && (
+          <Link to={prevPath} className="goto-prev">
+            <img src="/images/left-arrow.svg" alt="link to previous page" />
+          </Link>
+        )}
+        {!!nextPath && (
+          <Link to={nextPath} className="goto-next">
+            <img src="/images/right-arrow.svg" alt="link to next page" />
+          </Link>
+        )}
+        <MenuButton />
+        <div className="content">
+          <h5>FAQ</h5>
+          <div className="options-content">
+            {options.map((option, index) => (
+              <div
+                key={`question${index}`}
+                className={`option ${index === optionIndex ? 'option--selected' : ''}`}
+                onClick={() => handleClickOption(index)}
+              >
+                {option.question}
                 <div
-                  key={`question${index}`}
-                  className={`option ${index === optionIndex ? 'option--selected' : ''}`}
-                  onClick={this.handleClickOption(index)}
+                  key={`answer${index}`}
+                  className={`answer ${index === optionIndex ? 'answer--selected' : ''}`}
                 >
-                  {option.question}
-                  <div
-                    key={`answer${index}`}
-                    className={`answer ${index === optionIndex ? 'answer--selected': ''}`}
-                  >
-                    {option.answer}
-                  </div>
+                  {option.answer}
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+export default Faq;

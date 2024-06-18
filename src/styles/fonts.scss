@@ -5,9 +5,9 @@
   font-display: swap;
   src:  local('ACaslonPro'),
         local('Adobe Caslon Pro'),
-        url('/fonts/ACaslonPro/ACaslonPro-Regular-subset.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-Regular.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-Regular.otf');
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Regular-subset.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Regular.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Regular.otf');
   font-weight: normal;
   font-style: normal;
 }
@@ -17,9 +17,9 @@
   font-display: swap;
   src:  local('ACaslonPro-Italic'),
         local('Adobe Caslon Pro Italic'),
-        url('/fonts/ACaslonPro/ACaslonPro-Italic-subset.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-Italic.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-Italic.otf');
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Italic-subset.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Italic.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Italic.otf');
   font-weight: normal;
   font-style: italic;
 }
@@ -29,9 +29,9 @@
   font-display: swap;
   src:  local('ACaslonPro-Semibold'),
         local('Adobe Caslon Pro Semibold'),
-        url('/fonts/ACaslonPro/ACaslonPro-Semibold-subset.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-Semibold.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-Semibold.otf');
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Semibold-subset.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Semibold.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Semibold.otf');
   font-weight: 600;
   font-style: normal;
 }
@@ -41,9 +41,9 @@
   font-display: swap;
   src:  local('ACaslonPro-SemiboldItalic'),
         local('Adobe Caslon Pro Semibold Italic'),
-        url('/fonts/ACaslonPro/ACaslonPro-SemiboldItalic-subset.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-SemiboldItalic.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-SemiboldItalic.otf');
+        url('../../public/fonts/ACaslonPro/ACaslonPro-SemiboldItalic-subset.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-SemiboldItalic.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-SemiboldItalic.otf');
   font-weight: 600;
   font-style: italic;
 }
@@ -53,9 +53,9 @@
   font-display: swap;
   src:  local('ACaslonPro-Bold'),
         local('Adobe Caslon Pro Bold'),
-        url('/fonts/ACaslonPro/ACaslonPro-Bold-subset.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-Bold.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-Bold.otf');
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Bold-subset.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Bold.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-Bold.otf');
   font-weight: bold;
   font-style: normal;
 }
@@ -65,9 +65,9 @@
   font-display: swap;
   src:  local('ACaslonPro'),
         local('Adobe Caslon Pro'),
-        url('/fonts/ACaslonPro/ACaslonPro-BoldItalic-subset.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-BoldItalic.woff2') format('woff2'),
-        url('/fonts/ACaslonPro/ACaslonPro-BoldItalic.otf');
+        url('../../public/fonts/ACaslonPro/ACaslonPro-BoldItalic-subset.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-BoldItalic.woff2') format('woff2'),
+        url('../../public/fonts/ACaslonPro/ACaslonPro-BoldItalic.otf');
   font-weight: bold;
   font-style: italic;
 }
@@ -75,7 +75,7 @@
 @font-face {
   font-family: 'ATTAleckSans';
   font-display: swap;
-  src:  url('/fonts/ATTAleckSans/ATTAleckSans-Regular--subset.woff2');
+  src:  url('../../public/fonts/ATTAleckSans/ATTAleckSans-Regular--subset.woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -83,7 +83,7 @@
 @font-face {
   font-family: 'ATTAleckSans';
   font-display: swap;
-  src:  url('/fonts/ATTAleckSans/ATTAleckSans-Medium--subset.woff2');
+  src:  url('../../public/fonts/ATTAleckSans/ATTAleckSans-Medium--subset.woff2');
   font-weight: 600;
   font-style: normal;
 }
@@ -91,7 +91,7 @@
 @font-face {
   font-family: 'ATTAleckSans';
   font-display: swap;
-  src:  url('/fonts/ATTAleckSans/ATTAleckSans-Bold--subset.woff2');
+  src:  url('../../public/fonts/ATTAleckSans/ATTAleckSans-Bold--subset.woff2');
   font-weight: bold;
   font-style: normal;
 }
