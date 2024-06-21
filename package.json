@@ -3,17 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-spring/web": "^9.7.3",
-    "d3-ease": "^3.0.1",
     "firebase-tools": "^10.0.0",
-    "framer-motion": "^11.2.10",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-move": "^6.5.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.23.1",
     "react-scripts": "^5.0.1",
-    "react-transition-group": "^4.3.0",
     "react-transition-group-react-18": "^4.5.3",
     "redux": "^4.1.2",
     "sass": "^1.43.4"
